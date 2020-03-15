@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+	<title>Looping - fullPage.js</title>
+	
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+	<link rel="stylesheet prefetch" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+	<link rel="stylesheet" type="text/css" href="css/fullpage.css" />
+
+<style>
+ul#hp-menu {
+	position: fixed;
+	bottom: 20px;
+	left: 20px;
+	z-index: 10;
+	padding: 0;
+	margin: 0;
+}
+ul#hp-menu li {
+	display: inline-block;
+}
+ul#hp-menu li a {
+	text-decoration: none;
+	color: #1e1e1e;
+}
+#hp-menu li.active a {
+	color: blue;
+}
+ul#hp-menu li a:hover {
+	border-bottom: 2px solid blue;
+}
+ul#social-menu {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 10;
+    padding: 0;
+    margin: 0;
+}
+ul#social-menu li {
+    display: block;
+    text-align: center;
+    font-size: 24px;
+}
+
+
+
+.introduction.row, .game.row, .categories.row, .designers.row, .social.row {
+    height: 100vh;
+    width: 100vw;
+    margin: 0;
+}
+.introduction.row {
+    background: url(img/home.jpg);
+    background-size: cover;
+    background-position: center center;
+}
+.game.row .background-image {
+    background: url(img/game.jpg);
+    background-size: cover;
+    background-position: center center;
+}
+.categories.row .background-image {
+    background: url(img/korugif.gif);
+    background-size: cover;
+    background-position: center center;
+}
+.designers.row .background-image {
+    background: url(img/designers.jpg);
+    background-size: cover;
+    background-position: center center;
+}
+.social.row {
+    background: url(img/social.jpg);
+    background-size: cover;
+    background-position: center center;
+}
+.content {
+    padding: 20px 30px;
+    max-width: 720px;
+    margin: 0 auto;
+}
+h2 {
+    font-weight: 300;
+    margin-bottom: 30px;
+}
+h3 {
+    font-size: 15px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-top: 30px;
+    margin-bottom: 10px;
+}
+p {
+    font-size: 18px;
+    line-height: 1.5;
+    margin: 0 0 20px;
+}
+
+
+
+
+
+
+
+ul#main-nav {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    left: 10px;
+}
+#ms-menu {
+	display: none;
+}
+ul#main-nav {
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+ul#main-nav > .ms-main {
+	position: relative;
+}
+
+ul#main-nav > .ms-li {
+	position: absolute;
+	top: 0;
+	left: 8px;
+	transition: left .5s ease;
+	z-index: 1;
+}
+ul#main-nav .ms-menu-toggle:checked ~ .ms-li1 {
+	left: 120%;
+	transition: left .5s ease;
+}
+ul#main-nav .ms-menu-toggle:checked ~ .ms-li1 a span {
+	opacity: 1;
+	transition: opacity .5s ease .1s;
+}
+ul#main-nav .ms-menu-toggle:checked ~ .ms-li2 {
+	left: 215%;
+	transition: left .6s ease;
+}
+ul#main-nav .ms-menu-toggle:checked ~ .ms-li2 a span {
+	opacity: 1;
+	transition: opacity .6s ease .2s;
+}
+ul#main-nav .ms-menu-toggle:checked ~ .ms-li3 {
+	left: 310%;
+	transition: left .7s ease;
+}
+ul#main-nav .ms-menu-toggle:checked ~ .ms-li3 a span {
+	opacity: 1;
+	transition: opacity .7s ease .3s;
+}
+ul#main-nav .ms-menu-toggle:checked ~ .ms-li4 {
+	left: 405%;
+	transition: left .8s ease;
+}
+ul#main-nav .ms-menu-toggle:checked ~ .ms-li4 a span {
+	opacity: 1;
+	transition: opacity .8s ease .4s;
+}
+ul#main-nav .ms-menu-toggle:checked ~ .ms-main span {
+	transition: transform .35s ease;
+}
+ul#main-nav .ms-menu-toggle ~ .ms-main span {
+	transition: transform .35s ease;
+	opacity: 1;
+}
+ul#main-nav > .ms-main > a {
+	box-shadow: 0px 5px 10px rgba(0,0,0,0.35);
+}
+ul#main-nav > .ms-main a, ul#main-nav > .ms-main > a > label {
+    background: #101010;
+    width: 75px;
+    position: relative;
+    text-align: center;
+    z-index: 10;
+}
+ul#main-nav > .ms-main a:hover,
+ul#main-nav > .ms-main > a:hover > label {
+	background: #423d44;
+}
+ul#main-nav > li > a span {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	margin: auto;
+	height: 30px;
+	width: 30px;
+	opacity: 0;
+	z-index: 12;
+}
+ul#main-nav > li .fa {
+	margin-top: 19.5px;
+}
+
+@media (max-width: 575px) {
+
+ul.ms-nav {
+    left: 20px;
+}
+.ms-nav > li a {
+    color: #ddd;
+}
+	
+}
+	
+</style>
+
+	<!--[if IE]>
+		<script type="text/javascript">
+			 var console = { log: function() {} };
+		</script>
+	<![endif]-->
+</head>
+<body>
+	
+<ul id="main-nav">
+	<input type="checkbox" id="ms-menu" class="ms-menu-toggle" name="ms-menu-toggle" />
+	<li id="logo" class="ms-main"><a href="javascript:void(0)"><label class="ms-menu-toggle-lbl" for="ms-menu">Logo</label></a></li>
+	<li class="ms-li ms-li1 ms-li-first"><a href="index.html">Home</a></li>
+	<li class="ms-li ms-li2"><a href="#">Play</a></li>
+	<li class="ms-li ms-li3 ms-li-last"><a href="#" target="_blank">Buy</a></li>
+</ul>
+
+<ul id="hp-menu">
+	<li data-menuanchor="introduction" class="active"><a href="#introduction">Introduction</a></li>
+	<li data-menuanchor="game"><a href="#game">The Game</a></li>
+	<li data-menuanchor="categories"><a href="#categories">The Categories</a></li>
+	<li data-menuanchor="designers"><a href="#designers">The Designers</a></li>
+	<li data-menuanchor="social"><a href="#social">Stay Updated</a></li>
+</ul>
+
+<ul id="social-menu">
+	<li><a href="https://twitter.com/letsplaykoru" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+	<li><a href="https://www.facebook.com/letsplaykoru" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+	<li><a href="https://www.instagram.com/letsplaykoru/" target="_blank"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+</ul>
+
+<div id="fullpage">
+	<div class="section " id="section0">
+		<div class="introduction row">
+			<div class="col d-flex align-items-center justify-content-center">
+				<img src="img/gameofstruggles.png">
+			</div>
+		</div>
+	</div>
+	<div class="section" id="section1">
+		<div class="game row">
+			<div class="col col-md-7 d-flex align-items-center">
+				<div class="content">
+					<h2>The Game</h2>
+					<p>Koru is a card game that promotes the discussion of mental health in a light-hearted, fun, non-judgmental environment. The card prompts lead players through the stressors and hassles of everyday life, taking everyone through phases of self analysis, reflection, empathy, connection, support, and—of course—struggles!</p>
+					<p>Koru is all about storytelling and struggling. It’s crazy how much you can get to know the people around you—the best and worst of them—through telling stories. This is how we bond as human beings: we admit and we relate.</p>
+					<p>The idea is to struggle openly. The more a player struggles, the further they advance in the game. Being able to share, relate, and assist gives players the upper hand and adds to the larger narrative.</p>
+					<p><strong>The goal of the game</strong> is for each player to achieve a new sense of self; to come together and grow stronger as a community by admitting our personal stories and struggling together.</p>
+				</div>
+			</div>
+			<div class="col background-image"></div>
+		</div>
+	</div>
+	<div class="section" id="section2">
+		<div class="categories row">
+			<div class="col col-md-7 d-flex align-items-center">
+				<div class="content">
+					<h2>The Categories</h2>
+					<h3>ANIMA deals with self analysis.</h3>
+					<p>These cards allow players to explore and share various aspects of their personality while getting to know each other in a similar fashion.</p>
+					<h3>SENSUM deals with feelings and perspective.</h3>
+					<p>How do you view or handle certain situations? These cards trigger feelings and allow players to admit what makes them vulnerable.</p>
+					<h3>EMPATHIA deals with empathy and relatability.</h3>
+					<p>We all experience anger, nostalgia, and excitement—it’s what makes us human! These cards push our ability to relate to one another.</p>
+					<h3>NEXUS deals with connectivity.</h3>
+					<p>Through group questions and challenges, these cards allow for players to work together and form a durable bond.</p>
+					<h3>CERTO deals with daily strife.</h3>
+					<p>Relive your most embarrassing moments, walk everyone through your most stressful experiences, and discover just how often we all struggle.</p>
+				</div>
+			</div>
+			<div class="col background-image"></div>
+		</div>
+	</div>
+	<div class="section" id="section3">
+		<div class="designers row">
+			<div class="col col-md-7 d-flex align-items-center">
+				<div class="content">
+					<h2>The Designers</h2>
+					<p>Koru was created by <strong>Lauren Siminski</strong> and <strong>Faridah Adam</strong>, two graphic design seniors at The Maryland Institute College of Art. We started out with an impossible dream: to promote the discussion of mental health in a fun, collaborative way. Through a ton of research and social design brainstorming techniques, we found that a game would be an exciting way of doing this.</p>
+					<p>We’d like to thank everyone that supported us and allowed us to bring our dream to life. We couldn’t have done it without all of the incredibly helpful feedback we received along the way!</p>
+				</div>
+			</div>
+			<div class="col background-image"></div>
+		</div>
+	</div>
+	<div class="section" id="section4">
+		<div class="social row">
+			<div class="col d-flex align-items-center justify-content-center">
+				<div class="social-stuff">
+					<h2>Logo</h2>
+					<div class="text-center">
+						<a href="https://twitter.com/letsplaykoru" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a> <a href="https://www.facebook.com/letsplaykoru" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a> <a href="https://www.instagram.com/letsplaykoru/" target="_blank"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<script type="text/javascript" src="js/fullpage.js"></script>
+<script type="text/javascript" src="js/examples.js"></script>
+<script type="text/javascript">
+    var myFullpage = new fullpage('#fullpage', {
+        anchors: ['introduction', 'game', 'categories', 'designers', 'social'],
+        menu: '#hp-menu',
+        loopTop: true,
+        loopBottom: true
+    });
+</script>
+
+</body>
+</html>
